@@ -1,6 +1,7 @@
 {
     "ignoreHTTPSErrors": true,
     "headless": false,
+    "slowMo": 15,
     "devtools": false,
     "args": [
         "--no-sandbox",
