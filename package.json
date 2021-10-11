@@ -1,0 +1,26 @@
+{
+    "name": "resident-home",
+    "description": "",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/denis180889/resident-home.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/denis180889/resident-home/issues"
+    },
+    "homepage": "https://github.com/denis180889/resident-home#readme",
+    "dependencies": {
+        "@babel/preset-env": "^7.15.8",
+        "axios": "^0.21.1",
+        "jest": "^27.2.5",
+        "jest-expect-message": "^1.0.2",
+        "puppeteer": "^10.4.0"
+    }
+}
