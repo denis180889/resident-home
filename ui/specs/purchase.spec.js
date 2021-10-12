@@ -37,7 +37,7 @@ describe("Purchase tests", () => {
         await shippingPage.fillPhoneNumber(faker.phone.phoneNumber());
         await shippingPage.continueToBilling();
 
-        await page.waitForTimeout(15000);
+        //await page.waitForTimeout(15000);
     });
 
 })

@@ -6,7 +6,7 @@ export class ShippingPage {
     zipCodeInput = "#shippingAddress_zip";
     phoneInput = "#shippingAddress_phone";
     stateSelect = "select#shippingAddress_state";
-    continueToBillingBtn = "#checkout_shipping_continue_btn";
+    continueToBillingBtn = "#checkout_shipping_continue_btn:enabled";
 
     constructor(page) {
         this.page = page;
@@ -41,6 +41,15 @@ export class ShippingPage {
     }
 
     async continueToBilling() {
-        await (await this.page.waitForSelector(this.continueToBillingBtn)).click();
+        await this.page.waitForNetworkIdle();
+        const continueToBillingBtn = await this.page.waitForSelector(this.continueToBillingBtn);
+
+        await Promise.all([
+            this.page.waitForNavigation({
+                waitUntil: ["load", "networkidle0"],
+            }),
+            continueToBillingBtn.click()
+        ]);
+
     }
 }

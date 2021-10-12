@@ -19,7 +19,7 @@ export class HomePage {
 
         await Promise.all([
             this.page.waitForNavigation({
-                waitUntil: ["load"],
+                waitUntil: ["load", "networkidle0"],
             }),
             shopMattressButton.click()
         ]);
