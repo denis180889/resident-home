@@ -1,7 +1,7 @@
 import puppeteer from "puppeteer";
 import faker from "faker";
 import puppeteerConfig from "../../puppeteer.config.json";
-import { HomePage, ShopMattressPage, ShippingPage } from "../pages";
+import { HomePage, ShopMattressPage, ShippingPage, BillingPage } from "../pages";
 
 describe("Purchase tests", () => {
     let browser;
@@ -9,6 +9,7 @@ describe("Purchase tests", () => {
     let homePage;
     let shopMattressPage;
     let shippingPage;
+    let billingPage;
 
     const url = "https://qa.levelsleep.com/";
 
@@ -18,6 +19,7 @@ describe("Purchase tests", () => {
         homePage = new HomePage(page);
         shopMattressPage = new ShopMattressPage(page);
         shippingPage = new ShippingPage(page);
+        billingPage = new BillingPage(page);
     });
 
     afterEach(async () => {
@@ -25,6 +27,10 @@ describe("Purchase tests", () => {
     });
 
     test("Purchase mattress test", async () => {
+        const cardNumber = "4242 4242 4242 4242";
+        const expireDate = "10/25";
+        const securityCode = "911";
+
         await homePage.goToHomePage(url);
         await homePage.goToShopMattressPage();
         await shopMattressPage.addToCart();
@@ -36,8 +42,10 @@ describe("Purchase tests", () => {
         await shippingPage.fillZipCode("90011");
         await shippingPage.fillPhoneNumber(faker.phone.phoneNumber());
         await shippingPage.continueToBilling();
-
-        //await page.waitForTimeout(15000);
+        await billingPage.fillCardNumber(cardNumber);
+        await billingPage.fillExpireDate(expireDate);
+        await billingPage.fillSecurityCode(securityCode);
+        await page.screenshot({ path: "billingPage.jpg", fullPage: true });
     });
 
 })

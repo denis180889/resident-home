@@ -33,7 +33,9 @@ export class ShippingPage {
     }
 
     async fillPhoneNumber(phoneNumber) {
-        await (await this.page.waitForSelector(this.phoneInput)).type(phoneNumber);
+        const phoneNumberInput = await this.page.waitForSelector(this.phoneInput);
+        await phoneNumberInput.click();
+        await phoneNumberInput.type(phoneNumber);
     }
 
     async selectState(state) {
@@ -46,7 +48,7 @@ export class ShippingPage {
 
         await Promise.all([
             this.page.waitForNavigation({
-                waitUntil: ["load", "networkidle0"],
+                waitUntil: ["load"],
             }),
             continueToBillingBtn.click()
         ]);
