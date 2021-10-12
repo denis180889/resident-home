@@ -42,15 +42,15 @@ describe("User tests", () => {
             job: "DevOps"
         }
 
-        const responsePost = await axios.post(`${host}/api/users`, user);
-        expect(responsePost.status, 'Response status should be 201').toEqual(201);
+        const postResponse = await axios.post(`${host}/api/users`, user);
+        expect(postResponse.status, 'Response status should be 201').toEqual(201);
 
-        const responsePut = await axios.put(`${host}/api/users/${responsePost.data.id}`, userUpdated);
-        expect(responsePut.status, 'Response status should be 200').toEqual(200);
+        const putResponse = await axios.put(`${host}/api/users/${postResponse.data.id}`, userUpdated);
+        expect(putResponse.status, 'Response status should be 200').toEqual(200);
 
-        expect(responsePut.data.name).toEqual(userUpdated.name);
-        expect(responsePut.data.job).toEqual(userUpdated.job);
-        expect(new Date(responsePut.data.updatedAt)).toBeDate();
+        expect(putResponse.data.name).toEqual(userUpdated.name);
+        expect(putResponse.data.job).toEqual(userUpdated.job);
+        expect(new Date(putResponse.data.updatedAt)).toBeDate();
     });
 
     test("Update user by Patch methods", async () => {

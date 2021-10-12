@@ -16,5 +16,5 @@ npm run test-ui
 #### api tests:  
 npm run test-api  
   
-## screenshot billingPage.jpg is saved in the root directory
-## report test-report.html is generated in the root directory
+## screenshot billingPage.jpg is saved in the root directory (example is provided in the repository)  
+## report test-report.html is generated in the root directory (example is provided in the repository)  
