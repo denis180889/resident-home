@@ -1,5 +1,5 @@
 export class HomePage {
-    signInButton = "a.login";
+    shopMattressButton = "a[data-testid=shop_mattress_button]";
 
     constructor(page) {
         this.page = page;
@@ -11,17 +11,17 @@ export class HomePage {
         });
     }
 
-    async goToSignInPage() {
-        const signInButton = await this.page.waitForSelector(this.signInButton, { visible: true });
-        if (!signInButton) {
-            throw new Error("Sing In button is not present");
+    async goToShopMattressPage() {
+        const shopMattressButton = await this.page.waitForSelector(this.shopMattressButton, { visible: true });
+        if (!shopMattressButton) {
+            throw new Error("Shop mattress button is not present");
         }
 
         await Promise.all([
             this.page.waitForNavigation({
                 waitUntil: ["load"],
             }),
-            signInButton.click()
+            shopMattressButton.click()
         ]);
     }
 
