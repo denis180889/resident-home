@@ -1,5 +1,4 @@
 module.exports = {
-    testMatch: ["**/specs/*.spec.js"],
     setupFilesAfterEnv: ["jest-extended/all", "jest-expect-message"],
     reporters: [
         "default",

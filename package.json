@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "main": "index.js",
     "scripts": {
+        "test-all": "jest -c ./jest.config.js",
         "test-ui": "jest -c ./jest.config.ui.js",
         "test-api": "jest -c ./jest.config.api.js"
     },
