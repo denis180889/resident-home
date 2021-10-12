@@ -16,6 +16,5 @@ npm run test-ui
 #### api tests:  
 npm run test-api  
   
-## path config: ./jest.config.js  
 ## screenshot billingPage.jpg is saved in the root directory
 ## report test-report.html is generated in the root directory

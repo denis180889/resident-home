@@ -42,15 +42,15 @@ describe("User tests", () => {
             job: "DevOps"
         }
 
-        let response = await axios.post(`${host}/api/users`, user);
-        expect(response.status, 'Response status should be 201').toEqual(201);
+        const responsePost = await axios.post(`${host}/api/users`, user);
+        expect(responsePost.status, 'Response status should be 201').toEqual(201);
 
-        response = await axios.put(`${host}/api/users/${response.data.id}`, userUpdated);
-        expect(response.status, 'Response status should be 200').toEqual(200);
+        const responsePut = await axios.put(`${host}/api/users/${responsePost.data.id}`, userUpdated);
+        expect(responsePut.status, 'Response status should be 200').toEqual(200);
 
-        expect(response.data.name).toEqual(userUpdated.name);
-        expect(response.data.job).toEqual(userUpdated.job);
-        expect(new Date(response.data.updatedAt)).toBeDate();
+        expect(responsePut.data.name).toEqual(userUpdated.name);
+        expect(responsePut.data.job).toEqual(userUpdated.job);
+        expect(new Date(responsePut.data.updatedAt)).toBeDate();
     });
 
     test("Update user by Patch methods", async () => {
@@ -59,16 +59,16 @@ describe("User tests", () => {
             job: "QA"
         }
 
-        let response = await axios.post(`${host}/api/users`, user);
-        expect(response.status, 'Response status should be 201').toEqual(201);
+        const postResponse = await axios.post(`${host}/api/users`, user);
+        expect(postResponse.status, 'Response status should be 201').toEqual(201);
 
         user.name = "John Johns";
-        response = await axios.patch(`${host}/api/users/${response.data.id}`, user);
-        expect(response.status, 'Response status should be 200').toEqual(200);
+        const patchResponse = await axios.patch(`${host}/api/users/${postResponse.data.id}`, user);
+        expect(patchResponse.status, 'Response status should be 200').toEqual(200);
 
-        expect(response.data.name).toEqual(user.name);
-        expect(response.data.job).toEqual(user.job);
-        expect(new Date(response.data.updatedAt)).toBeDate();
+        expect(patchResponse.data.name).toEqual(user.name);
+        expect(patchResponse.data.job).toEqual(user.job);
+        expect(new Date(patchResponse.data.updatedAt)).toBeDate();
     });
 
     test("Delete user by id test", async () => {
@@ -77,11 +77,11 @@ describe("User tests", () => {
             job: "QA"
         }
 
-        let response = await axios.post(`${host}/api/users`, user);
-        expect(response.status, 'Response status should be 201').toEqual(201);
+        const postResponse = await axios.post(`${host}/api/users`, user);
+        expect(postResponse.status, 'Response status should be 201').toEqual(201);
 
-        response = await axios.delete(`${host}/api/users/${response.data.id}`);
-        expect(response.status, 'Response status should be 204').toEqual(204);
+        const deleteResponse = await axios.delete(`${host}/api/users/${postResponse.data.id}`);
+        expect(deleteResponse.status, 'Response status should be 204').toEqual(204);
     });
 
 })
