@@ -7,6 +7,9 @@
   
 ## How to run tests  
   
+#### all tests:  
+npm run test-all    
+  
 #### ui tests:  
 npm run test-ui  
   
